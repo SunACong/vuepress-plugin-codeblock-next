@@ -40,7 +40,7 @@ export const demoblockPlugin = ({
 }: DemoblockPluginOptions = {}) => {
   return {
     name: 'vuepress-plugin-codeblock-next',
-    clientConfigFile: path.resolve(__dirname, '../client/config.mjs'),
+    clientConfigFile: path.resolve(__dirname, `../client/config${process.env.npm_package_config_configExt || '.mjs'}`),
     extendsMarkdown: async (md: MarkdownIt) => {
       await (shiki({ theme, langs }) as any).extendsMarkdown(md)
       md.use(demoblock, {
